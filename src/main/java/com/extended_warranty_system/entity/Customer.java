@@ -1,20 +1,25 @@
 package com.extended_warranty_system.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 import java.sql.Timestamp;
 
-public class CustomerEntity {
-    private int customerId;
+@Entity
+@Table(name = "customers")
+public class Customer {
+    private Integer customerId;
     private String name;
     private String email;
     private String phone;
     private String address;
     Timestamp createdAt;
 
-    public int getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
