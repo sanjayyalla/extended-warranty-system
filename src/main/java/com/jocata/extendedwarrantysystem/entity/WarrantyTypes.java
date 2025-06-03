@@ -1,6 +1,6 @@
-package com.extended_warranty_system.entity;
+package com.jocata.extendedwarrantysystem.entity;
 
-import com.extended_warranty_system.enums.WarrantyTypeName;
+import com.jocata.extendedwarrantysystem.enums.WarrantyTypeName;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 

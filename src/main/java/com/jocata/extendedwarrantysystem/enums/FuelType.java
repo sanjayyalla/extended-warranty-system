@@ -1,4 +1,4 @@
-package com.extended_warranty_system.enums;
+package com.jocata.extendedwarrantysystem.enums;
 
 public enum FuelType {
     Petrol,

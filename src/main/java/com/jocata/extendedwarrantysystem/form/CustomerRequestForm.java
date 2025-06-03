@@ -1,25 +1,17 @@
-package com.extended_warranty_system.entity;
+package com.jocata.extendedwarrantysystem.form;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-
-import java.sql.Timestamp;
-
-@Entity
-@Table(name = "customers")
-public class Customer {
-    private Integer customerId;
+public class CustomerRequestForm {
+    private String customerId;
     private String name;
     private String email;
     private String phone;
     private String address;
-    Timestamp createdAt;
 
-    public Integer getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Integer customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 
@@ -54,14 +46,4 @@ public class Customer {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-
 }

@@ -1,28 +1,44 @@
-package com.extended_warranty_system.entity;
+package com.jocata.extendedwarrantysystem.entity;
 
-import com.extended_warranty_system.enums.EngineType;
-import com.extended_warranty_system.enums.FuelType;
-import com.extended_warranty_system.enums.TransmissionType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.jocata.extendedwarrantysystem.enums.EngineType;
+import com.jocata.extendedwarrantysystem.enums.FuelType;
+import com.jocata.extendedwarrantysystem.enums.TransmissionType;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "carmodels")
-public class CarModels {
+public class CarModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "model_id")
     private Integer modelId;
+    @Column(name = "make")
     private String make;
+    @Column(name = "model_name")
     private String modelName;
+    @Column(name = "year")
     private Integer year;
+    @Column(name = "base_price")
     private BigDecimal basePrice;
+    @Column(name = "engine_type")
+    @Enumerated(EnumType.STRING)
     private EngineType engineType;
+    @Column(name = "transmission")
+    @Enumerated(EnumType.STRING)
     private TransmissionType transmission;
+    @Column(name = "fuel_type")
+    @Enumerated(EnumType.STRING)
     private FuelType fuelType;
+    @Column(name = "seating_capacity")
     private Integer seatingCapacity;
+    @Column(name = "warranty_duration_months")
     private Integer warrantyDurationMonths;
+    @Column(name = "warranty_km_limit")
     private Integer warrantyKmLimit;
+    @Column(name = "created_at")
     private Timestamp createdAt;
 
     public Integer getModelId() {
