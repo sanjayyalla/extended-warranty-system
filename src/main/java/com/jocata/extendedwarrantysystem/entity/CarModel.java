@@ -38,7 +38,7 @@ public class CarModel {
     private Integer warrantyDurationMonths;
     @Column(name = "warranty_km_limit")
     private Integer warrantyKmLimit;
-    @Column(name = "created_at")
+    @Column(name = "created_at",insertable = false,updatable = false)
     private Timestamp createdAt;
 
     public Integer getModelId() {
