@@ -7,6 +7,8 @@ import com.jocata.extendedwarrantysystem.service.CarTypesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/cartypes")
 public class CarTypesController {
@@ -39,6 +41,18 @@ public class CarTypesController {
         return responseForm;
     }
 
+    @GetMapping("/getAllCarTypes")
+    public List<CarTypeResponseForm> getAllCarTypes(){
+        List<CarTypeResponseForm> responseForms = service.getAllCarTypes();
+        try{
+            if(!responseForms.isEmpty()){
+                return responseForms;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
     @PutMapping("/updateCarType")
     public CarTypeResponseForm updateCarType(@RequestBody CarTypeRequestForm requestForm){
         CarTypeResponseForm responseForm = null;

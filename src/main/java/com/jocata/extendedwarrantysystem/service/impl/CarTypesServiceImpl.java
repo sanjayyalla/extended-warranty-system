@@ -11,6 +11,9 @@ import com.jocata.extendedwarrantysystem.service.CarTypesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CarTypesServiceImpl implements CarTypesService {
     @Autowired
@@ -40,6 +43,19 @@ public class CarTypesServiceImpl implements CarTypesService {
     }
 
     @Override
+    public List<CarTypeResponseForm> getAllCarTypes() {
+        List<CarTypes> carTypesList = dao.getAllCarTypes();
+        List<CarTypeResponseForm> responseFormList = new ArrayList<>();
+        for(CarTypes carType:carTypesList){
+            CarTypeResponseForm responseForm = new CarTypeResponseForm();
+            responseForm.setCarTypeId(String.valueOf(carType.getCarTypeId()));
+            responseForm.setCarTypeName(String.valueOf(carType.getCarTypeName()));
+            responseFormList.add(responseForm);
+        }
+        return responseFormList;
+    }
+
+    @Override
     public CarTypeResponseForm updateCarType(CarTypeRequestForm requestForm) {
         CarTypes entity = new CarTypes();
         entity.setCarTypeId(Integer.valueOf(requestForm.getCarTypeId()));
@@ -60,4 +76,6 @@ public class CarTypesServiceImpl implements CarTypesService {
         }
         return null;
     }
+
+
 }

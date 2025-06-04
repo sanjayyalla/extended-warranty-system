@@ -14,6 +14,7 @@
 
         <mapping class="com.jocata.extendedwarrantysystem.entity.Customer"/>
         <mapping class="com.jocata.extendedwarrantysystem.entity.CarTypes"/>
+        <mapping class="com.jocata.extendedwarrantysystem.entity.CoverageTypes"/>
 
     </session-factory>
 </hibernate-configuration>

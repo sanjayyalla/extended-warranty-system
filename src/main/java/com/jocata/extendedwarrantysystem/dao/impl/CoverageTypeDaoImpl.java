@@ -1,8 +1,8 @@
 package com.jocata.extendedwarrantysystem.dao.impl;
 
 import com.jocata.extendedwarrantysystem.HibernateUtil.HibernateUtil;
-import com.jocata.extendedwarrantysystem.dao.CarTypesDao;
-import com.jocata.extendedwarrantysystem.entity.CarTypes;
+import com.jocata.extendedwarrantysystem.dao.CoverageTypeDao;
+import com.jocata.extendedwarrantysystem.entity.CoverageTypes;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
@@ -10,65 +10,59 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class CarTypesDaoImpl implements CarTypesDao {
+public class CoverageTypeDaoImpl implements CoverageTypeDao {
     @Override
-    public CarTypes addCarType(CarTypes entity) {
+    public CoverageTypes addCoverageType(CoverageTypes entity) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         session.persist(entity);
-        System.out.println("I am here");
         tx.commit();
         session.close();
         return entity;
     }
 
     @Override
-    public CarTypes getCarType(Integer carTypeId) {
+    public CoverageTypes getCoverageType(Integer coverageTypeId) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        CarTypes entity = session.find(CarTypes.class, carTypeId);
+        CoverageTypes entity = session.find(CoverageTypes.class, coverageTypeId);
         tx.commit();
         session.close();
         return entity;
     }
 
     @Override
-    public List<CarTypes> getAllCarTypes() {
+    public CoverageTypes updateCoverageType(CoverageTypes entity) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        List<CarTypes> carTypesList = session.createQuery("FROM CarTypes", CarTypes.class).list();
-        tx.commit();
-        session.close();
-        return carTypesList;
-
-    }
-
-    @Override
-    public CarTypes updateCarType(CarTypes entity) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        CarTypes existing = session.find(CarTypes.class, entity.getCarTypeId());
-        if (entity.getCarTypeName() != null) {
-            existing.setCarTypeName(entity.getCarTypeName());
+        CoverageTypes existing = session.find(CoverageTypes.class,entity.getCoverageTypeId());
+        if(entity.getName()!=null){
+            existing.setName(entity.getName());
         }
         tx.commit();
-        session.close();
         return existing;
     }
 
     @Override
-    public String deleteCarType(Integer carTypeId) {
+    public String deleteCoverageType(Integer coverageTypeId) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        CarTypes existing = session.find(CarTypes.class, carTypeId);
-        System.out.println(existing);
-        if (existing == null) {
-            return "Not found";
+        CoverageTypes existing = session.find(CoverageTypes.class,coverageTypeId);
+        if(existing!=null){
+            session.remove(existing);
+            tx.commit();
+            return "Deleted successfully";
         }
-        session.remove(existing);
-        tx.commit();
-        session.close();
-        return "Deleted successfully";
+        return "Not found";
     }
 
+    @Override
+    public List<CoverageTypes> getAllCoverageTypes() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        List<CoverageTypes> coverageTypesList = session.createQuery("FROM CoverageTypes", CoverageTypes.class).list();
+        tx.commit();
+        session.close();
+        return coverageTypesList;
+    }
 }
