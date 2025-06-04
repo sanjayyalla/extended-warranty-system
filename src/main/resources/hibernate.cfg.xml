@@ -13,7 +13,7 @@
         <mapping class="com.jocata.extendedwarrantysystem.entity.CarModel"/>
 
         <mapping class="com.jocata.extendedwarrantysystem.entity.Customer"/>
-
+        <mapping class="com.jocata.extendedwarrantysystem.entity.CarTypes"/>
 
     </session-factory>
 </hibernate-configuration>

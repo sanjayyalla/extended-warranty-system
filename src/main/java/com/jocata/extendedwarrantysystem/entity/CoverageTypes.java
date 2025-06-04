@@ -1,13 +1,17 @@
 package com.jocata.extendedwarrantysystem.entity;
 
 import com.jocata.extendedwarrantysystem.enums.CoverageTypeName;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "coveragetypes")
 public class CoverageTypes {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "coverage_type_id")
     private Integer coverageTypeId;
+    @Column(name = "name")
+    @Enumerated(EnumType.STRING)
     private CoverageTypeName name;
 
     public Integer getCoverageTypeId() {
