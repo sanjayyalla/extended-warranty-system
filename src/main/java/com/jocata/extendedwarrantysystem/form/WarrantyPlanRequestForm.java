@@ -8,7 +8,7 @@ public class WarrantyPlanRequestForm {
     private String warrantyTypeId;
     private String coverageTypeId;
     private String basePrice;
-    private String surchagePercent;
+    private String surchargePercent;
 
     public String getPlanId() {
         return planId;
@@ -66,11 +66,11 @@ public class WarrantyPlanRequestForm {
         this.basePrice = basePrice;
     }
 
-    public String getSurchagePercent() {
-        return surchagePercent;
+    public String getSurchargePercent() {
+        return surchargePercent;
     }
 
-    public void setSurchagePercent(String surchagePercent) {
-        this.surchagePercent = surchagePercent;
+    public void setSurchargePercent(String surchargePercent) {
+        this.surchargePercent = surchargePercent;
     }
 }

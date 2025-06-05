@@ -5,4 +5,6 @@ import com.jocata.extendedwarrantysystem.form.WarrantyPlanResponseForm;
 
 public interface WarrantyPlanService {
     WarrantyPlanResponseForm addWarrantyPlan(WarrantyPlanRequestForm requestForm);
+
+    WarrantyPlanResponseForm updateWarrantyPlan(WarrantyPlanRequestForm requestForm);
 }

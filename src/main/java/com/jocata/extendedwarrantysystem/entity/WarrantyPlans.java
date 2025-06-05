@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 @Table(name = "warrantyplans")
 public class WarrantyPlans {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "plan_id")
     private Integer planId;
     @Column(name = "name")
