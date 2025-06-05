@@ -1,20 +1,35 @@
 package com.jocata.extendedwarrantysystem.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "warrantyplans")
 public class WarrantyPlans {
+    @Id
+    @Column(name = "plan_id")
     private Integer planId;
+    @Column(name = "name")
     private String name;
+    @Column(name = "duration_months")
     private Integer durationMonths;
+    @Column(name = "km_limit")
     private Integer kmLimit;
-    private Integer warrantyTypeId;
-    private Integer coverageTypeId;
+
+//    @Column(name = "warranty_type_id")
+    @ManyToOne
+    @JoinColumn(name = "warranty_type_id", referencedColumnName = "warranty_type_id")
+    private WarrantyTypes warrantyType;
+
+//    @Column(name = "coverage_type_id")
+    @ManyToOne
+    @JoinColumn(name = "coverage_type_id", referencedColumnName = "coverage_type_id")
+    private CoverageTypes coverageType;
+
+    @Column(name = "base_price")
     private BigDecimal basePrice;
+    @Column(name = "surcharge_percent")
     private BigDecimal surchargePercent;
 
     public Integer getPlanId() {
@@ -49,20 +64,20 @@ public class WarrantyPlans {
         this.kmLimit = kmLimit;
     }
 
-    public Integer getWarrantyTypeId() {
-        return warrantyTypeId;
+    public WarrantyTypes getWarrantyType() {
+        return warrantyType;
     }
 
-    public void setWarrantyTypeId(Integer warrantyTypeId) {
-        this.warrantyTypeId = warrantyTypeId;
+    public void setWarrantyType(WarrantyTypes warrantyType) {
+        this.warrantyType = warrantyType;
     }
 
-    public Integer getCoverageTypeId() {
-        return coverageTypeId;
+    public CoverageTypes getCoverageType() {
+        return coverageType;
     }
 
-    public void setCoverageTypeId(Integer coverageTypeId) {
-        this.coverageTypeId = coverageTypeId;
+    public void setCoverageType(CoverageTypes coverageType) {
+        this.coverageType = coverageType;
     }
 
     public BigDecimal getBasePrice() {
