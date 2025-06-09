@@ -1,5 +1,6 @@
 package com.jocata.extendedwarrantysystem.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -9,20 +10,35 @@ import java.sql.Date;
 @Entity
 @Table(name = "carwarranties")
 public class CarWarranties {
+    @Column(name = "car_warranty_id")
     private Integer carWarrantyId;
+    @Column(name = "car_sale_id")
     private Integer carSaleId;
+    @Column(name = "plan_id")
     private Integer planId;
+    @Column(name = "bw_start_date")
     private Date bwStartDate;
+    @Column(name = "bw_end_date")
     private Date bwEndDate;
+    @Column(name = "bw_km_start")
     private Integer bwKmStart;
+    @Column(name = "bw_km_end")
     private Integer bwKmEnd;
+    @Column(name = "exw_start_date")
     private Date exwStartDate;
+    @Column(name = "exw_end_date")
     private Date exwEndDate;
+    @Column(name = "exw_km_start")
     private Integer exwKmStart;
+    @Column(name = "exw_km_end")
     private Integer exwKmEnd;
+    @Column(name = "price_paid")
     private BigDecimal pricePaid;
+    @Column(name = "purchased_during_basic")
     private Boolean purchasedDuringBasic;
+    @Column(name = "exw_purchase_date")
     private Date exwPurchaseDate;
+    @Column(name = "is_active")
     private Boolean isActive;
 
     public Integer getCarWarrantyId() {
