@@ -1,8 +1,6 @@
 package com.jocata.extendedwarrantysystem.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -10,12 +8,17 @@ import java.sql.Date;
 @Entity
 @Table(name = "carwarranties")
 public class CarWarranties {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "car_warranty_id")
     private Integer carWarrantyId;
     @Column(name = "car_sale_id")
-    private Integer carSaleId;
-    @Column(name = "plan_id")
-    private Integer planId;
+    @ManyToOne
+    @JoinColumn(name = "car_sale_id",referencedColumnName = "car_sale_id")
+    private CarSaleRecords carSaleId;
+    @ManyToOne
+    @JoinColumn(name = "plan_id",referencedColumnName = "plan_id")
+    private WarrantyPlans planId;
     @Column(name = "bw_start_date")
     private Date bwStartDate;
     @Column(name = "bw_end_date")
@@ -41,6 +44,24 @@ public class CarWarranties {
     @Column(name = "is_active")
     private Boolean isActive;
 
+
+
+    public CarSaleRecords getCarSaleId() {
+        return carSaleId;
+    }
+
+    public void setCarSaleId(CarSaleRecords carSaleId) {
+        this.carSaleId = carSaleId;
+    }
+
+    public Boolean getPurchasedDuringBasic() {
+        return purchasedDuringBasic;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
     public Integer getCarWarrantyId() {
         return carWarrantyId;
     }
@@ -49,19 +70,11 @@ public class CarWarranties {
         this.carWarrantyId = carWarrantyId;
     }
 
-    public Integer getCarSaleId() {
-        return carSaleId;
-    }
-
-    public void setCarSaleId(Integer carSaleId) {
-        this.carSaleId = carSaleId;
-    }
-
-    public Integer getPlanId() {
+    public WarrantyPlans getPlanId() {
         return planId;
     }
 
-    public void setPlanId(Integer planId) {
+    public void setPlanId(WarrantyPlans planId) {
         this.planId = planId;
     }
 
